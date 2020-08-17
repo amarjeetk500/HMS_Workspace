@@ -1,0 +1,322 @@
+{
+	"info": {
+		"_postman_id": "899c0e3f-aef1-4b9f-8579-c072b0d78dbe",
+		"name": "HMS-RoleSetup",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AddRole",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "508e3489-2935-41d5-97e6-eddff9e0dafb",
+						"exec": [
+							"pm.test(\"Add Role\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "8b481be7-0006-4913-b5eb-74d0ab8f7af5",
+						"exec": [
+							"pm.environment.set('RandomRoleCode', '{{$randomUUID}}');"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "text/xml"
+					},
+					{
+						"key": "Cache-Control",
+						"type": "text",
+						"value": "no-cache"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n  <soapenv:Header xmlns:wsa=\"http://www.w3.org/2005/08/addressing\">\r\n    <wsse:Security xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\" soapenv:mustUnderstand=\"1\">\r\n      <wsse:UsernameToken xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\" wsu:Id=\"UsernameToken-1\">\r\n        <wsse:Username>R5@HMS_1</wsse:Username>\r\n        <wsse:Password Type=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText\">HMSr5U$ER</wsse:Password>\r\n      </wsse:UsernameToken>\r\n    </wsse:Security>\r\n    <wsa:To>http://localhost/axis2/services/HMSService</wsa:To>\r\n    <wsa:MessageID>urn:uuid:asdfasdfasdfasdfdfa</wsa:MessageID>\r\n    <wsa:Action>urn:processMessage</wsa:Action>\r\n  </soapenv:Header>\r\n  <soapenv:Body>\r\n<p:MP6073_AddLDAPRole_001 callname=\"AddLDAPRole\" noun=\"LDAPRole\" verb=\"Add\" version=\"001\" xmlns:p=\"http://schemas.datastream.net/MP_functions/MP6073_001\" xmlns:p1=\"http://schemas.datastream.net/MP_entities/LDAPRole_001\" xmlns:p2=\"http://schemas.datastream.net/MP_fields\" xmlns:p3=\"http://www.openapplications.org/oagis_segments\" xmlns:p4=\"http://www.openapplications.org/oagis_fields\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://schemas.datastream.net/MP_functions/MP6073_001 MP6073_AddLDAPRole_001.xsd \">\r\n  <p1:LDAPRole recordid=\"0\">\r\n    <p2:LDAPROLEID>\r\n      <p2:ROLECODE>Postman - Generated Role Code 001</p2:ROLECODE>\r\n      <p2:DESCRIPTION>Postman Generated Role Description</p2:DESCRIPTION>\r\n    </p2:LDAPROLEID>\r\n    <p2:USERGROUPCODE>R5</p2:USERGROUPCODE>\r\n    <p2:DEFAULTORG entity=\"User\">\r\n      <p2:ORGANIZATIONCODE>FLH</p2:ORGANIZATIONCODE>\r\n    </p2:DEFAULTORG>\r\n    <p2:LANGUAGECODE>EN</p2:LANGUAGECODE>\r\n    <p2:MSGTIMEOUT index=\"\" qualifier=\"ACTUAL\" type=\"T\">\r\n      <p4:VALUE>5</p4:VALUE>\r\n      <p4:NUMOFDEC>0</p4:NUMOFDEC>\r\n      <p4:SIGN>+</p4:SIGN>\r\n      <p4:CURRENCY></p4:CURRENCY>\r\n      <p4:DRCR></p4:DRCR>\r\n    </p2:MSGTIMEOUT>\r\n    <p2:LOCALE>NAMERICA</p2:LOCALE>\r\n    <p2:FIRSTFORM></p2:FIRSTFORM>\r\n    <p2:EWSFUNCTION></p2:EWSFUNCTION>\r\n    <p2:ISACTIVE>+</p2:ISACTIVE>\r\n    <p2:ISCONNECTOR>+</p2:ISCONNECTOR>\r\n    <p2:ISMOBILE>+</p2:ISMOBILE>\r\n    <p2:ISMOBILEADMIN>+</p2:ISMOBILEADMIN>\r\n  </p1:LDAPRole>\r\n</p:MP6073_AddLDAPRole_001>\r\n  </soapenv:Body>\r\n</soapenv:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://usgvnbhunnicut3/axis2/services/HMSService",
+					"protocol": "http",
+					"host": [
+						"usgvnbhunnicut3"
+					],
+					"path": [
+						"axis2",
+						"services",
+						"HMSService"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddRoleDuplicate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6b60ab6e-662d-4481-a4a5-834e6c5f42d3",
+						"exec": [
+							"pm.test(\"Add Role\", function () {\r",
+							"    pm.response.to.have.status(500);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "97e8bb16-0b38-4bbc-b157-e827a824cd62",
+						"exec": [
+							"pm.environment.set('RandomRoleCode', '{{$randomUUID}}');"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "text/xml"
+					},
+					{
+						"key": "Cache-Control",
+						"type": "text",
+						"value": "no-cache"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n  <soapenv:Header xmlns:wsa=\"http://www.w3.org/2005/08/addressing\">\r\n    <wsse:Security xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\" soapenv:mustUnderstand=\"1\">\r\n      <wsse:UsernameToken xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\" wsu:Id=\"UsernameToken-1\">\r\n        <wsse:Username>R5@HMS_1</wsse:Username>\r\n        <wsse:Password Type=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText\">HMSr5U$ER</wsse:Password>\r\n      </wsse:UsernameToken>\r\n    </wsse:Security>\r\n    <wsa:To>http://localhost/axis2/services/HMSService</wsa:To>\r\n    <wsa:MessageID>urn:uuid:asdfasdfasdfasdfdfa</wsa:MessageID>\r\n    <wsa:Action>urn:processMessage</wsa:Action>\r\n  </soapenv:Header>\r\n  <soapenv:Body>\r\n<p:MP6073_AddLDAPRole_001 callname=\"AddLDAPRole\" noun=\"LDAPRole\" verb=\"Add\" version=\"001\" xmlns:p=\"http://schemas.datastream.net/MP_functions/MP6073_001\" xmlns:p1=\"http://schemas.datastream.net/MP_entities/LDAPRole_001\" xmlns:p2=\"http://schemas.datastream.net/MP_fields\" xmlns:p3=\"http://www.openapplications.org/oagis_segments\" xmlns:p4=\"http://www.openapplications.org/oagis_fields\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://schemas.datastream.net/MP_functions/MP6073_001 MP6073_AddLDAPRole_001.xsd \">\r\n  <p1:LDAPRole recordid=\"0\">\r\n    <p2:LDAPROLEID>\r\n      <p2:ROLECODE>Postman - Generated Role Code 001</p2:ROLECODE>\r\n      <p2:DESCRIPTION>Postman Generated Role Description</p2:DESCRIPTION>\r\n    </p2:LDAPROLEID>\r\n    <p2:USERGROUPCODE>R5</p2:USERGROUPCODE>\r\n    <p2:DEFAULTORG entity=\"User\">\r\n      <p2:ORGANIZATIONCODE>FLH</p2:ORGANIZATIONCODE>\r\n    </p2:DEFAULTORG>\r\n    <p2:LANGUAGECODE>EN</p2:LANGUAGECODE>\r\n    <p2:MSGTIMEOUT index=\"\" qualifier=\"ACTUAL\" type=\"T\">\r\n      <p4:VALUE>5</p4:VALUE>\r\n      <p4:NUMOFDEC>0</p4:NUMOFDEC>\r\n      <p4:SIGN>+</p4:SIGN>\r\n      <p4:CURRENCY></p4:CURRENCY>\r\n      <p4:DRCR></p4:DRCR>\r\n    </p2:MSGTIMEOUT>\r\n    <p2:LOCALE>NAMERICA</p2:LOCALE>\r\n    <p2:FIRSTFORM></p2:FIRSTFORM>\r\n    <p2:EWSFUNCTION></p2:EWSFUNCTION>\r\n    <p2:ISACTIVE>+</p2:ISACTIVE>\r\n    <p2:ISCONNECTOR>+</p2:ISCONNECTOR>\r\n    <p2:ISMOBILE>+</p2:ISMOBILE>\r\n    <p2:ISMOBILEADMIN>+</p2:ISMOBILEADMIN>\r\n  </p1:LDAPRole>\r\n</p:MP6073_AddLDAPRole_001>\r\n  </soapenv:Body>\r\n</soapenv:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://usgvnbhunnicut3/axis2/services/HMSService",
+					"protocol": "http",
+					"host": [
+						"usgvnbhunnicut3"
+					],
+					"path": [
+						"axis2",
+						"services",
+						"HMSService"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetRole",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5d0a6bed-40d3-4c7f-b902-7fee1646ee1a",
+						"exec": [
+							"pm.test(\"Add Role\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "text/xml"
+					},
+					{
+						"key": "Cache-Control",
+						"type": "text",
+						"value": "no-cache"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n    <soapenv:Header xmlns:wsa=\"http://www.w3.org/2005/08/addressing\">\r\n        <wsse:Security xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\" soapenv:mustUnderstand=\"1\">\r\n            <wsse:UsernameToken xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\" wsu:Id=\"UsernameToken-1\">\r\n                <wsse:Username>R5@HMS_1</wsse:Username>\r\n                <wsse:Password Type=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText\">HMSr5U$ER</wsse:Password>\r\n            </wsse:UsernameToken>\r\n        </wsse:Security>\r\n        <wsa:To>http://localhost/axis2/services/HMSService</wsa:To>\r\n        <wsa:MessageID>urn:uuid:asdfasdfasdfasdfdfa</wsa:MessageID>\r\n        <wsa:Action>urn:processMessage</wsa:Action>\r\n    </soapenv:Header>\r\n    <soapenv:Body>\r\n        <p:MP6072_GetLDAPRole_001 xmlns:p=\"http://schemas.datastream.net/MP_functions/MP6072_001\" xmlns:p1=\"http://schemas.datastream.net/MP_fields\" xmlns:p2=\"http://www.openapplications.org/oagis_segments\" xmlns:p3=\"http://www.openapplications.org/oagis_fields\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://schemas.datastream.net/MP_functions/MP6072_001 MP6072_GetLDAPRole_001.xsd\">\r\n            <p1:LDAPROLEID>\r\n                <p1:ROLECODE>Postman - Generated Role Code 001</p1:ROLECODE>\r\n            </p1:LDAPROLEID>\r\n        </p:MP6072_GetLDAPRole_001>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://usgvnbhunnicut3/axis2/services/HMSService",
+					"protocol": "http",
+					"host": [
+						"usgvnbhunnicut3"
+					],
+					"path": [
+						"axis2",
+						"services",
+						"HMSService"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Grid-BSROLE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a908b40f-5f9b-406f-9103-4445536ddac6",
+						"exec": [
+							"pm.test(\"Add Role\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "text/xml"
+					},
+					{
+						"key": "Cache-Control",
+						"type": "text",
+						"value": "no-cache"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n    <soapenv:Header xmlns:wsa=\"http://www.w3.org/2005/08/addressing\">\r\n        <wsse:Security soapenv:mustUnderstand=\"1\" xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">\r\n            <wsse:UsernameToken wsu:Id=\"UsernameToken-1\" xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\">\r\n                <wsse:Username>R5@HMS_1</wsse:Username>\r\n                <wsse:Password Type=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText\">HMSr5U$ER</wsse:Password>\r\n            </wsse:UsernameToken>\r\n        </wsse:Security>\r\n        <wsa:MessageID>urn:uuid:349e74b240c+24c89a58302978f2e63ff</wsa:MessageID>\r\n        <wsa:To>http://usgvnbhunnicut3:80/axis2/services/HMSService</wsa:To>\r\n        <wsa:Action>urn:processMessage</wsa:Action>\r\n        <KeepSession>false</KeepSession>\r\n    </soapenv:Header>\r\n    <soapenv:Body>\r\n        <MP0116_GetGridDataOnly_001 xmlns:dsg=\"http://schemas.datastream.net/MP_functions/GridRequest\" xmlns=\"http://schemas.datastream.net/MP_functions/MP0116_GetGridDataOnly_001\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\r\n            <FUNCTION_REQUEST_INFO REQUEST_TYPE=\"LIST.HEAD_DATA.STORED\">\r\n                <GRID GRID_NAME=\"BSROLE\" USER_FUNCTION_NAME=\"BSROLE\" NUMBER_OF_ROWS_FIRST_RETURNED=\"10000\" CURSOR_POSITION=\"1\" TERSERESPONSE=\"true\" RESULT_IN_SAXORDER=\"true\" LOCALIZE_RESULT=\"false\"/>\r\n                <GRID_TYPE TYPE=\"LIST\"/>\r\n                <DATASPY DATASPY_ID=\"143\"/>\r\n                <MULTIADDON_FILTERS><MADDON_FILTER ALIAS_NAME=\"role\" JOINER=\"AND\" OPERATOR=\"=\" SEQNUM=\"1\" VALUE=\"Postman - Generated Role Code 001\"/></MULTIADDON_FILTERS>\r\n            </FUNCTION_REQUEST_INFO>\r\n        </MP0116_GetGridDataOnly_001>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://usgvnbhunnicut3/axis2/services/HMSService",
+					"protocol": "http",
+					"host": [
+						"usgvnbhunnicut3"
+					],
+					"path": [
+						"axis2",
+						"services",
+						"HMSService"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteRole",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "447bef06-1c07-4cac-9211-d9f020d0b5cf",
+						"exec": [
+							"pm.test(\"Delete Role\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					},
+					{
+						"key": "Cache-Control",
+						"value": "no-cache",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n    <soapenv:Header xmlns:wsa=\"http://www.w3.org/2005/08/addressing\">\r\n        <wsse:Security xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\" soapenv:mustUnderstand=\"1\">\r\n            <wsse:UsernameToken xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\" wsu:Id=\"UsernameToken-1\">\r\n                <wsse:Username>R5@HMS_1</wsse:Username>\r\n                <wsse:Password Type=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText\">HMSr5U$ER</wsse:Password>\r\n            </wsse:UsernameToken>\r\n        </wsse:Security>\r\n        <wsa:To>http://localhost/axis2/services/HMSService</wsa:To>\r\n        <wsa:MessageID>urn:uuid:asdfasdfasdfasdfdfa</wsa:MessageID>\r\n        <wsa:Action>urn:processMessage</wsa:Action>\r\n    </soapenv:Header>\r\n    <soapenv:Body>\r\n        <p:MP6075_DeleteLDAPRole_001 xmlns:p=\"http://schemas.datastream.net/MP_functions/MP6075_001\" xmlns:p1=\"http://schemas.datastream.net/MP_fields\" xmlns:p2=\"http://www.openapplications.org/oagis_segments\" xmlns:p3=\"http://www.openapplications.org/oagis_fields\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://schemas.datastream.net/MP_functions/MP6075_001 MP6075_DeleteLDAPRole_001.xsd \">\r\n            <p1:LDAPROLEID>\r\n                <p1:ROLECODE>Postman - Generated Role Code 001</p1:ROLECODE>\r\n            </p1:LDAPROLEID>\r\n        </p:MP6075_DeleteLDAPRole_001>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://usgvnbhunnicut3/axis2/services/HMSService",
+					"protocol": "http",
+					"host": [
+						"usgvnbhunnicut3"
+					],
+					"path": [
+						"axis2",
+						"services",
+						"HMSService"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "f6d7174f-bf10-4e6a-ba98-e731d911dec7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "08573895-0f29-490e-a017-520531032297",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
