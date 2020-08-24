@@ -1,0 +1,34 @@
+{
+	"id": "125ad9f6-fea7-4961-bea7-d6dfe1bd168f",
+	"name": "HMS_Developers",
+	"values": [
+		{
+			"key": "ENV_URL",
+			"value": "http://inbanakumar25.infor.com:82/axis2/services/HMSService",
+			"enabled": true
+		},
+		{
+			"key": "ENV_USERNAME",
+			"value": "R5",
+			"enabled": true
+		},
+		{
+			"key": "ENV_PASSWORD",
+			"value": "HMSr5U$ER",
+			"enabled": true
+		},
+		{
+			"key": "ENV_TENANT",
+			"value": "HMS_1",
+			"enabled": true
+		},
+		{
+			"key": "ENV_XMLHEADER",
+			"value": "<?xml version=\"1.0\" encoding=\"utf-8\"?><soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"><soapenv:Header xmlns:wsa=\"http://www.w3.org/2005/08/addressing\"><wsse:Security xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\" soapenv:mustUnderstand=\"1\"><wsse:UsernameToken xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\" wsu:Id=\"UsernameToken-1\"><wsse:Username>R5@HMS_1</wsse:Username><wsse:Password Type=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText\">HMSr5U$ER</wsse:Password></wsse:UsernameToken></wsse:Security><wsa:To>http://localhost/axis2/services/HMSService</wsa:To><wsa:MessageID>urn:uuid:asdfasdfasdfasdfdfa</wsa:MessageID><wsa:Action>urn:processMessage</wsa:Action></soapenv:Header>",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2020-08-19T04:22:40.507Z",
+	"_postman_exported_using": "Postman/7.30.1"
+}
